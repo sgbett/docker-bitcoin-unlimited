@@ -1,0 +1,30 @@
+User: bitcoin
+
+Env:
+ - RPCUSER : bitcoin
+ - RPCPASS : 654Q43GPvRayNpDbZL4rAdsW4GE2fSaejubcGcuwp1c4
+ - RPCPORT : 58332
+
+Expose:
+ - 58332
+
+Add:
+ - http://www.bitcoinunlimited.info/downloads/bitcoinUnlimited-0.11.2-linux64.tar.gz : /home/bitcoin/
+
+Daemon:
+ - Name: bitcoind
+   Command: /home/bitcoin/bitcoinUnlimited-0.11.2/bin/bitcoind -server -txindex -rpcuser=$RPCUSER -rpcpassword=$RPCPASS -rpcport=$RPCPORT -reindex
+
+Run: |
+ # Unpacking Bitcoin Executable
+ cd /home/bitcoin/
+ tar xzvf bitcoinUnlimited-0.11.2-linux64.tar.gz
+ chown -R bitcoin:bitcoin .
+ 
+Cron:
+ - Name: block-height
+   Command: /home/bitcoin/bitcoinUnlimited-0.11.2/bin/bitcoin-cli -rpcuser=$RPCUSER -rpcpassword=$RPCPASS -rpcport=$RPCPORT getblockcount
+
+Volumes:
+ - /home/bitcoin/.bitcoin
+
