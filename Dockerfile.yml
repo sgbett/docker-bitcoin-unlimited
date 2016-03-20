@@ -1,3 +1,5 @@
+Email: jrruethe@gmail.com
+
 User: bitcoin
 
 Env:
@@ -9,7 +11,8 @@ Env:
 
 Expose: $BITCOIN_PORT
 
-Add: http://www.bitcoinunlimited.info/downloads/bitcoinUnlimited-$BITCOIN_VERSION-linux64.tar.gz : /home/bitcoin/
+Copy: 
+ - bitcoinUnlimited-$BITCOIN_VERSION-linux64.tar.gz : /home/bitcoin/
 
 Run: |
  # Unpacking Bitcoin Executable
@@ -19,11 +22,12 @@ Run: |
 
 Daemon:
  - bitcoind : |
-     /home/bitcoin/bitcoinUnlimited-$BITCOIN_VERSION/bin/bitcoind \
-       -server                                                    \
-       -txindex                                                   \
-       -rpcuser=$RPCUSER                                          \
-       -rpcpassword=$RPCPASS                                      \
+     /home/bitcoin/bitcoinUnlimited-$BITCOIN_VERSION/bin/bitcoind      \
+       -server                                                         \
+       -txindex                                                        \
+       -rpcallowip=`ip route get 8.8.8.8 | awk '{print $NF; exit}'`/24 \
+       -rpcuser=$RPCUSER                                               \
+       -rpcpassword=$RPCPASS                                           \
        -rpcport=$RPCPORT
  
 Cron:
@@ -31,4 +35,4 @@ Cron:
  - connection-count : /home/bitcoin/bitcoinUnlimited-$BITCOIN_VERSION/bin/bitcoin-cli -rpcuser=$RPCUSER -rpcpassword=$RPCPASS -rpcport=$RPCPORT getconnectioncount
 
 Volume: /home/bitcoin/.bitcoin
-
+Network: bitcoin

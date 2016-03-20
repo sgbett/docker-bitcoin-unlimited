@@ -1,0 +1,10 @@
+.git
+docker-bitcoin-unlimited*
+.dockerignore
+build.sh
+run.sh
+stop.sh
+init.sh
+install.sh
+uninstall.sh
+package.sh
