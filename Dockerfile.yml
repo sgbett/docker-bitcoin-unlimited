@@ -3,7 +3,7 @@ Email: jrruethe@gmail.com
 User: bitcoin
 
 Env:
- - BITCOIN_VERSION : 0.11.2
+ - BITCOIN_VERSION : 0.12.0
  - RPCUSER         : bitcoin
  - RPCPASS         : 654Q43GPvRayNpDbZL4rAdsW4GE2fSaejubcGcuwp1c4
  - RPCPORT         : 8332
@@ -22,13 +22,16 @@ Run: |
 
 Daemon:
  - bitcoind : |
-     /home/bitcoin/bitcoinUnlimited-$BITCOIN_VERSION/bin/bitcoind      \
-       -server                                                         \
-       -txindex                                                        \
-       -rpcallowip=`ip route get 8.8.8.8 | awk '{print $NF; exit}'`/24 \
-       -rpcuser=$RPCUSER                                               \
-       -rpcpassword=$RPCPASS                                           \
-       -rpcport=$RPCPORT
+     /home/bitcoin/bitcoinUnlimited-$BITCOIN_VERSION/bin/bitcoind \
+       -server                                                    \
+       -txindex                                                   \
+       -disablewallet                                             \
+       -whitelist=255.255.255.0                                   \
+       -rpcallowip=0.0.0.0/0                                      \
+       -rpcuser=$RPCUSER                                          \
+       -rpcpassword=$RPCPASS                                      \
+       -rpcport=$RPCPORT                                          \
+               
  
 Cron:
  - block-height     : /home/bitcoin/bitcoinUnlimited-$BITCOIN_VERSION/bin/bitcoin-cli -rpcuser=$RPCUSER -rpcpassword=$RPCPASS -rpcport=$RPCPORT getblockcount

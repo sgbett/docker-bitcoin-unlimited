@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Setting environment variables
-BITCOIN_VERSION=0.11.2
+BITCOIN_VERSION=0.12.0
 RPCUSER=bitcoin
 RPCPASS=654Q43GPvRayNpDbZL4rAdsW4GE2fSaejubcGcuwp1c4
 RPCPORT=8332
