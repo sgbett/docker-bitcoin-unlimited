@@ -1,6 +1,6 @@
 #!/bin/bash
  NAME=docker-bitcoin-unlimited
-IMAGE=`ls ${NAME}_*.tgz`
+IMAGE=`ls ${NAME}_*.tar.bz2`
 VERSION=`echo ${IMAGE} | sed "s@${NAME}_\(.*\)\.tar\.bz2@\1@"`
  rm -f ${NAME}_*.deb
  fpm -s dir -t deb                   \

@@ -1,4 +1,4 @@
-# docker-bitcoin-unlimited 2016-04-17 09:05:58 -0400
+# docker-bitcoin-unlimited 2016-04-17 11:11:13 -0400
 FROM phusion/baseimage:0.9.18
 MAINTAINER jrruethe@gmail.com
 
