@@ -1,4 +1,4 @@
-# docker-bitcoin-unlimited 2016-04-17 11:11:13 -0400
+# docker-bitcoin-unlimited 2016-05-17 21:01:24 -0400
 FROM phusion/baseimage:0.9.18
 MAINTAINER jrruethe@gmail.com
 
@@ -55,4 +55,3 @@ RUN `# Creating user / Adjusting user permissions`                              
 VOLUME /home/bitcoin/.bitcoin
 
 ENTRYPOINT ["/sbin/my_init"]
-CMD [""]

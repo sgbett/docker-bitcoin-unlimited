@@ -31,8 +31,7 @@ Daemon:
        -rpcuser=$RPCUSER                                          \
        -rpcpassword=$RPCPASS                                      \
        -rpcport=$RPCPORT                                          \
-               
- 
+
 Cron:
  - block-height     : /home/bitcoin/bitcoinUnlimited-$BITCOIN_VERSION/bin/bitcoin-cli -rpcuser=$RPCUSER -rpcpassword=$RPCPASS -rpcport=$RPCPORT getblockcount
  - connection-count : /home/bitcoin/bitcoinUnlimited-$BITCOIN_VERSION/bin/bitcoin-cli -rpcuser=$RPCUSER -rpcpassword=$RPCPASS -rpcport=$RPCPORT getconnectioncount
